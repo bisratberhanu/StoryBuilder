@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chained Story Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f6d365, #fda085);
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            margin-top: 20px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            margin-top: 15px;
+            background: #ff7e5f;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #ea5455;
+        }
+        h2 {
+            color: #222;
+            margin-top: 20px;
+        }
+        p {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            max-width: 600px;
+            text-align: left;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chained Story Builder</h1>
+    <p>This is a chain of thoughts implementation using prompt engineering with the Gemini API.</p>
+    <form method="post">
+        {% csrf_token %}
+        <label for="title">Title:</label>
+        <input type="text" name="title" required>
+        <br>
+        <label for="temperature">Temperature (0.0 to 1.0):</label>
+        <input type="number" step="0.1" name="temperature" min="0.0" max="1.0" required>
+        <br>
+        <button type="submit">Generate Story</button>
+    </form>
+    {% if story %}
+    <h2>Generated Story</h2>
+    <p>{{ story }}</p>
+    {% endif %}
+</body>
+</html>
