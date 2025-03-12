@@ -1,3 +1,4 @@
 google-generativeai
 django
 gunicorn
+python-dotenv
